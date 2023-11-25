@@ -19,6 +19,7 @@ ol li {
 :root {
     --branco: #fff;
     --verde: rgba(92, 167, 32, 1);
+    --verde-hover: rgba(92, 167, 32, .6);
     --marrom: rgba(81, 34, 0, 0.74);
     --preto: rgba(22, 22, 22, 1);
     --cinza: rgba(165, 161, 161, 1);
@@ -86,7 +87,6 @@ header nav img:hover,
 main {
     background-color: var(--bg-body);
     padding: 0px --padding-lateral;
-    height: 1500px;
 }
 
 .banner img {
@@ -94,7 +94,116 @@ main {
     height: 350px;
 }
 
+.content .lead {
+    background-color: var(--bg-body);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--padding-lateral);
+    height: 50px;
+    border-bottom: 1px solid var(--border-light-gray);
+}
 
+.content .lead p:nth-child(1) {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.content .lead p:nth-child(2) {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.content .products-container {
+    padding: 0 var(--padding-lateral);
+    margin: var(--margin-md) 0px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.card figure .img-container {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.card figure .img-container img {
+    max-width: 300px;
+}
+
+.card figure .img-container .content {
+    position: absolute;
+    inset: 0;
+    font-size: 20px;
+    padding: 20px;
+    background: var(--verde-hover);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card figure .img-container img,
+.card figure .img-container .content {
+    transition: 500ms ease-in-out;
+}
+
+.img-container:hover>img.blur {
+    filter: blur(5px);
+    transform: scale(1.1);
+}
+
+.card figure .img-container .content.slide-up {
+    transform: translateY(100%);
+}
+
+.card figure .img-container:hover .content.slide-up {
+    transform: translateY(0);
+}
+
+.products-container .card figcaption {
+    margin: 10px 0px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.card .price-container {
+    margin: 10px 0px;
+}
+
+.card .price-container p {
+    font-size: 16px;
+}
+
+.card .price-container p span {
+    font-size: 17px;
+    color: var(--verde);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.card .btn-container button,
+.newsletter-container form input:nth-child(2) {
+    background-color: var(--bg-btn);
+    color: var(--btn-font-color);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.card .btn-container button {
+    height: 40px;
+    width: 110px;
+    border: none;
+    font-size: 16px;
+    border-radius: var(--border-radius-md);
+}
+
+.card .btn-container button:hover {
+    background-color: var(--bg-btn-hover);
+    transition: var(--transition);
+}
 
 footer {
     background-color: var(--bg-footer);
