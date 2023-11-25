@@ -303,3 +303,47 @@ footer {
 .pay-container figure:nth-child(3) img {
     width: 80px;
 }
+
+@media (max-width: 850px) {
+    .banner img {
+        height: 300px;
+    }
+
+    .first-section {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 750px) {
+    .banner img {
+        height: 250px;
+    }
+
+    .content .products-container {
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .newsletter-container form {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .newsletter-container form input:nth-child(1),
+    .newsletter-container form input:nth-child(2) {
+        width: 100%;
+        border: 1px solid var(--border-light-gray);
+        border-radius: var(--border-radius-sm);
+    }
+}
+
+@media (max-width: 380px) {
+    .second-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+}
