@@ -32,7 +32,7 @@
 <a id="Descrição"></a>
 ### Descrição
 
-O projeto consiste em um desafio do <a href="https://vainaweb.com.br/" target="_blank">Vai Na Web</a> onde foi proposto criar um site **responsivo** para um aplicativo de músicas com as tecnologias **HTML** com **CSS** e **Javascript**.
+O projeto consiste no desafio final do <a href="https://vainaweb.com.br/" target="_blank">Vai Na Web</a> onde foi proposto criar um site **responsivo** que vende produtos para cuidado pessoal, com as tecnologias **HTML** com **CSS** e **Javascript**.
 
 <a id="Tecnologias"></a>
 ### Tecnologias utilizadas
