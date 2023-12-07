@@ -79,7 +79,7 @@ header nav img {
 }
 
 header nav img:hover,
-.redes-container img:hover {
+.media-container img:hover {
     transition: var(--transition);
     transform: scale(1.1);
 }
@@ -280,14 +280,14 @@ footer {
     padding-bottom: 20px;
 }
 
-.redes-container,
+.media-container,
 .pay-container {
     display: flex;
     gap: 15px;
     align-items: center;
 }
 
-.redes-container img {
+.media-container img {
     width: 30px;
     cursor: pointer;
 }
