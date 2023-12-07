@@ -64,6 +64,7 @@ header {
 
 header figure img {
     width: 90px;
+    height: 23px;
 }
 
 header nav {
@@ -74,6 +75,7 @@ header nav {
 
 header nav img {
     width: 20px;
+    height: 20px;
     cursor: pointer;
     transition: var(--transition);
 }
@@ -131,6 +133,7 @@ main {
 
 .card figure .img-container img {
     max-width: 300px;
+    height: 300px;
 }
 
 .card figure .img-container .content {
@@ -289,19 +292,23 @@ footer {
 
 .media-container img {
     width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
 .pay-container figure:nth-child(1) img {
     width: 43px;
+    height: 33px;
 }
 
 .pay-container figure:nth-child(2) img {
     width: 30px;
+    height: 33px;
 }
 
 .pay-container figure:nth-child(3) img {
     width: 80px;
+    height: 30px;
 }
 
 @media (max-width: 850px) {
