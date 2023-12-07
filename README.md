@@ -1,5 +1,5 @@
 <h1 align="center">
- <img align="center" width="120" height="120" src="./assets/selfcare-logo.png" alt="logo"><br>
+ <img align="center" width="120" height="120" src="./assets/selfcare-logo.webp" alt="logo"><br>
  SelfCare
 </h1>
 
@@ -19,12 +19,12 @@
 
 <h1 align="center">  
   <p align="center">
-  <img width="230" height="450" src="./assets/mobile.png" alt="site-mobile"><br><br>
+  <img width="230" height="450" src="./assets/mobile.webp" alt="site-mobile"><br><br>
 </p>
 
 <h1 align="center">  
   <p align="center">
-  <img width="500" height="800" src="./assets/desktop.png" alt="site beat"><br><br>
+  <img width="500" height="800" src="./assets/desktop.webp" alt="site beat"><br><br>
 </p>
 
 </h1>

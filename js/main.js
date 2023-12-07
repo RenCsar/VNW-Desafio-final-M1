@@ -3,9 +3,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const changeImage = () => {
       if (window.innerWidth <= 500) {
-        responsiveImage.src = './assets/banner-sm.png';
+        responsiveImage.src = './assets/banner-sm.webp';
       } else {
-        responsiveImage.src = './assets/banner.png';
+        responsiveImage.src = './assets/banner.webp';
       }
     }       
     changeImage();  
