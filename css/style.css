@@ -16,6 +16,12 @@ ol li {
     list-style: none;
 }
 
+button,
+input[type=submit]
+{
+    cursor: pointer;
+}
+
 :root {
     --branco: #fff;
     --verde: rgba(92, 167, 32, 1);
@@ -192,7 +198,6 @@ main {
     background-color: var(--bg-btn);
     color: var(--btn-font-color);
     transition: var(--transition);
-    cursor: pointer;
 }
 
 .card .btn-container button {
@@ -270,7 +275,6 @@ footer {
     background-color: var(--bg-btn);
     color: var(--btn-font-color);
     transition: var(--transition);
-    cursor: pointer;
 }
 
 .newsletter-container form input:nth-child(2):hover {
