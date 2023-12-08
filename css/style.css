@@ -96,7 +96,7 @@ main {
     height: 350px;
 }
 
-.content .lead {
+.content .content-header {
     background-color: var(--bg-body);
     display: flex;
     justify-content: space-between;
@@ -106,12 +106,12 @@ main {
     border-bottom: 1px solid var(--border-light-gray);
 }
 
-.content .lead p:nth-child(1) {
+.content .content-header p:nth-child(1) {
     font-weight: 600;
     font-size: 15px;
 }
 
-.content .lead p:nth-child(2) {
+.content .content-header p:nth-child(2) {
     font-weight: 400;
     font-size: 14px;
 }
