@@ -4,7 +4,7 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    user-select: none;    
+    user-select: none;
 }
 
 a {
@@ -410,6 +410,11 @@ main {
 }
 
 .disabled-content {
+    pointer-events: none;
+}
+
+.disabled {
+    opacity: 0.6;
     pointer-events: none;
 }
 

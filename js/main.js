@@ -15,12 +15,18 @@ const updateNotification = () => {
 
 updateNotification();
 
-const emptyCartMessage = () => {
+const isEmptyCart = () => {
   const li = document.createElement('li');
+  const btnDone = document.getElementById("btnDone");
   li.textContent = "Seu carrinho está vazio!";
   li.classList.add("empty-cart");
   if (listaCompras.length <= 0) {
     listaDestino.appendChild(li);
+    btnDone.disabled = true;
+    btnDone.classList.add("disabled");
+  } else {
+    btnDone.disabled = false;
+    btnDone.classList.remove("disabled");
   }
 }
 
@@ -48,7 +54,7 @@ const renderElements = () => {
     listaDestino.appendChild(li);
   });
   updateNotification();
-  emptyCartMessage();
+  isEmptyCart();
 };
 
 const openModal = () => {
