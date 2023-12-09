@@ -20,7 +20,9 @@
   <body>
     <header>
       <figure>
-        <img src="./assets/logo.webp" alt="logo" />
+        <a href="/index.html">
+          <img src="./assets/logo.webp" alt="logo" />
+        </a>
       </figure>
       <nav>
         <figure>
@@ -30,17 +32,23 @@
           <img src="./assets/perfil.webp" alt="perfin-icon" />
         </figure>
         <figure>
-          <img src="./assets/cart.webp" alt="cart-icon" />
+          <img
+            src="./assets/cart.webp"
+            alt="cart-icon"
+            onclick="openModal()"
+            id="btnCarrinho"
+          />
+          <span id="count"></span>
         </figure>
       </nav>
     </header>
     <main>
-      <section class="banner">
+      <section class="banner" id="banner">
         <figure>
           <img src="./assets/banner.webp" alt="banner" id="responsiveImage" />
         </figure>
       </section>
-      <section class="content">
+      <section class="content" id="sectionContent">
         <div class="content-header">
           <p>PROMOÇÃO</p>
           <p>9 produtos</p>
@@ -68,7 +76,12 @@
               <p>R$ <span>50,00</span></p>
             </div>
             <div class="btn-container">
-              <button>Comprar</button>
+              <button
+                id="btnElixir"
+                onclick="addProduto('Elixir da Eternidade', 50.00, 'btnElixir', './assets/produto01.webp')"
+              >
+                Comprar
+              </button>
             </div>
           </div>
           <div class="card">
@@ -93,7 +106,12 @@
               <p>R$ <span>50,00</span></p>
             </div>
             <div class="btn-container">
-              <button>Comprar</button>
+              <button
+                id="btnVitaminaSol"
+                onclick="addProduto('Vitamina do Sol', 50.00, 'btnVitaminaSol', './assets/produto02.webp')"
+              >
+                Comprar
+              </button>
             </div>
           </div>
           <div class="card">
@@ -118,7 +136,12 @@
               <p>R$ <span>50,00</span></p>
             </div>
             <div class="btn-container">
-              <button>Comprar</button>
+              <button
+                id="btnVitaminaLua"
+                onclick="addProduto('Vitamina da Lua', 50.00, 'btnVitaminaLua', './assets/produto03.webp')"
+              >
+                Comprar
+              </button>
             </div>
           </div>
           <div class="card">
@@ -143,7 +166,12 @@
               <p>R$ <span>50,00</span></p>
             </div>
             <div class="btn-container">
-              <button>Comprar</button>
+              <button
+                id="btnPetalasAmor"
+                onclick="addProduto('Pétalas de Amor', 50.00, 'btnPetalasAmor', './assets/produto04.webp')"
+              >
+                Comprar
+              </button>
             </div>
           </div>
           <div class="card">
@@ -168,7 +196,12 @@
               <p>R$ <span>50,00</span></p>
             </div>
             <div class="btn-container">
-              <button>Comprar</button>
+              <button
+                id="btnEssenciaNatureza"
+                onclick="addProduto('Essência da Natureza', 50.00, 'btnEssenciaNatureza', './assets/produto05.webp')"
+              >
+                Comprar
+              </button>
             </div>
           </div>
           <div class="card">
@@ -193,7 +226,12 @@
               <p>R$ <span>50,00</span></p>
             </div>
             <div class="btn-container">
-              <button>Comprar</button>
+              <button
+                id="btnJasminRosa"
+                onclick="addProduto('Jasmin com notas de Rosa', 50.00, 'btnJasminRosa', './assets/produto06.webp')"
+              >
+                Comprar
+              </button>
             </div>
           </div>
           <div class="card">
@@ -218,7 +256,12 @@
               <p>R$ <span>50,00</span></p>
             </div>
             <div class="btn-container">
-              <button>Comprar</button>
+              <button
+                id="btnEssenciaMelissa"
+                onclick="addProduto('Essência de Melissa', 50.00, 'btnEssenciaMelissa', './assets/produto07.webp')"
+              >
+                Comprar
+              </button>
             </div>
           </div>
           <div class="card">
@@ -243,7 +286,12 @@
               <p>R$ <span>50,00</span></p>
             </div>
             <div class="btn-container">
-              <button>Comprar</button>
+              <button
+                id="btnPurezaIluminada"
+                onclick="addProduto('Pureza Iluminada', 50.00, 'btnPurezaIluminada', './assets/produto08.webp')"
+              >
+                Comprar
+              </button>
             </div>
           </div>
           <div class="card">
@@ -268,13 +316,34 @@
               <p>R$ <span>50,00</span></p>
             </div>
             <div class="btn-container">
-              <button>Comprar</button>
+              <button
+                id="btnEssenciaPatchouli"
+                onclick="addProduto('Essência de Patchouli', 50.00, 'btnEssenciaPatchouli', './assets/produto09.webp')"
+              >
+                Comprar
+              </button>
             </div>
           </div>
         </div>
       </section>
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <div class="modal-header" id="modalHeader">
+            <h3>Carrinho de Compras:</h3>
+          </div>
+          <div class="list-container">
+            <ul id="listaDestino"></ul>
+          </div>
+          <div class="btn-container">
+            <button onclick="modalFinal()" class="btn-done">Finalizar</button>
+            <button onclick="clearList()" class="btn-clear">
+              Limpar Lista
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
-    <footer>
+    <footer id="footer">
       <div class="first-section">
         <div class="terms-container">
           <ul>

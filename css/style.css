@@ -17,14 +17,17 @@ ol li {
 }
 
 button,
-input[type=submit]
-{
+input[type=submit] {
     cursor: pointer;
 }
 
 :root {
     --branco: #fff;
     --verde: rgba(92, 167, 32, 1);
+    --verde-claro: rgb(174, 222, 135);
+    --vermelho: rgb(220, 53, 69);
+    --vermelho-hover: rgba(220, 53, 69, .6);
+    --vermelho-count: rgba(220, 53, 69, .8);
     --verde-hover: rgba(92, 167, 32, .6);
     --marrom: rgba(81, 34, 0, 0.74);
     --preto: rgba(22, 22, 22, 1);
@@ -37,6 +40,9 @@ input[type=submit]
     --bg-footer: var(--cinza-claro);
     --bg-btn: var(--verde);
     --bg-btn-hover: var(--marrom);
+    --bg-btn-remove: var(--vermelho);
+    --bg-btn-remove-hover: var(--vermelho);
+    --bg-modal: var(--cinza-claro);
 
     --border-radius-sm: 5px;
     --border-radius-md: 15px;
@@ -90,6 +96,21 @@ header nav img:hover,
 .media-container img:hover {
     transition: var(--transition);
     transform: scale(1.1);
+}
+
+.notification {
+    position: absolute;
+    top: 5px;
+    right: 25px;
+    background-color: var(--vermelho-count);
+    padding: 3px;
+    border-radius: 100px;
+    color: var(--branco);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 main {
@@ -211,6 +232,128 @@ main {
 .card .btn-container button:hover {
     background-color: var(--bg-btn-hover);
     transition: var(--transition);
+}
+
+.modal {
+    display: none;
+    z-index: 9;
+    height: 500px;
+    width: 400px;
+    background-color: var(--bg-modal);
+    position: fixed;
+    right: 35px;
+    top: 50px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    padding: 10px;
+}
+
+.modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.show {
+    display: flex;
+}
+
+.blur-content {
+    filter: blur(5px);
+}
+
+.modal-content .modal-header,
+.modal-content .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content .list-container {
+    margin-block: 20px;
+    overflow-x: none;
+    overflow: auto;
+    padding-block: 5px;
+}
+
+.modal-content .list-container,
+.modal-content .list-container ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.modal-content .list-container ul {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.list-container ul .empty-cart {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+}
+
+.list-container ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 350px;
+    padding: 5px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.list-container ul img {
+    width: 80px;
+    height: 80px;
+}
+
+.list-container ul button,
+.btn-container .btn-done,
+.modal-content .btn-container .btn-clear {
+    border-radius: var(--border-radius-sm);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.list-container ul button,
+.modal-content .btn-container .btn-clear {
+    background-color: var(--bg-btn-remove);
+}
+
+.list-container ul button:hover {
+    background-color: var(--bg-btn-remove-hover);
+}
+
+.modal-content .btn-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-content .btn-container .btn-done,
+.modal-content .btn-container .btn-clear {
+    height: 35px;
+}
+
+.modal-content .btn-container .btn-done {
+    background-color: var(--verde);
+    width: 100px;
+    font-size: 17px;
+}
+
+.modal-content .btn-container .btn-clear {
+    width: 100px;
 }
 
 footer {
