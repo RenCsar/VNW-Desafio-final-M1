@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   changeImage();
   window.addEventListener('resize', changeImage);
+  updateNotification();
 });
 
 // ------------- Modal ------------
@@ -50,10 +51,13 @@ const renderElements = () => {
     textoProduto.textContent = `${produto.nome} - R$ ${produto.preco.toFixed(2)}`;
     li.appendChild(textoProduto);
 
+    const trash = document.createElement("img");
+    trash.src = `./assets/lixeira.webp`;
+    trash.alt = `icone-lixeira`;
     const btnRemover = document.createElement('button');
-    btnRemover.textContent = 'Remover';
     btnRemover.onclick = () => removerItem(index);
 
+    btnRemover.appendChild(trash);
     li.appendChild(btnRemover);
     listaDestino.appendChild(li);
   });
@@ -70,8 +74,11 @@ const openModal = () => {
   const footer = document.getElementById("footer");
 
   sectionBanner.classList.toggle("blur-content");
+  sectionBanner.classList.toggle("disabled-content");
+  sectionContent.classList.toggle("disabled-content");
   sectionContent.classList.toggle("blur-content");
   footer.classList.toggle("blur-content");
+  footer.classList.toggle("disabled-content");
 
   renderElements();
 };
