@@ -1,20 +1,3 @@
-// Trocar imagem na responsividade
-window.addEventListener('DOMContentLoaded', () => {
-  const responsiveImage = document.getElementById('responsiveImage');
-
-  const changeImage = () => {
-    if (window.innerWidth <= 500) {
-      responsiveImage.src = './assets/banner-sm.webp';
-    } else {
-      responsiveImage.src = './assets/banner.webp';
-    }
-  }
-  changeImage();
-  window.addEventListener('resize', changeImage);
-  updateNotification();
-});
-
-// ------------- Modal ------------
 const listaCompras = JSON.parse(sessionStorage.getItem('listaCompras')) || [];
 const listaDestino = document.getElementById('listaDestino');
 const indicadorItens = document.getElementById('count');
@@ -28,6 +11,8 @@ const updateNotification = () => {
     indicadorItens.classList.remove("notification");
   }
 };
+
+updateNotification();
 
 const emptyCartMessage = () => {
   const li = document.createElement('li');
