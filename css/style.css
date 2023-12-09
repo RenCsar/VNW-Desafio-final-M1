@@ -413,9 +413,10 @@ main {
     pointer-events: none;
 }
 
-.disabled {
-    opacity: 0.6;
-    pointer-events: none;
+.modal-content .btn-container .btn-done.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: var(--cinza);
 }
 
 footer {
