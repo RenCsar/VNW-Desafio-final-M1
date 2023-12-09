@@ -18,7 +18,7 @@
     <title>SelfCare</title>
   </head>
   <body>
-    <header>
+    <header id="header">
       <figure>
         <a href="/index.html">
           <img src="./assets/logo.webp" alt="logo" />
@@ -336,6 +336,9 @@
       <div class="modal" id="modal">
         <div class="modal-content">
           <div class="modal-header" id="modalHeader">
+            <div class="btn-close">
+              <button onclick="openModal()">X</button>
+            </div>
             <h3>Carrinho de Compras:</h3>
           </div>
           <div class="list-container">
@@ -345,9 +348,27 @@
             <button onclick="modalFinal()" class="btn-done">
               Finalizar Compra
             </button>
-            <button onclick="clearList()" class="btn-clear">
+            <button onclick="clearButton()" class="btn-clear">
               Limpar Lista
             </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-confirm" id="modalConfirm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="btn-close">
+              <button onclick="modalFinal()">X</button>
+            </div>
+          </div>
+          <div class="modal-confirm-content">
+            <h3>Confirmar Compra?</h3>
+          </div>
+          <div class="btn-container">
+            <button onclick="confirmButton()" class="btn-done">
+              Confirmar Compra
+            </button>
+            <button onclick="modalFinal()" class="btn-clear">Cancelar</button>
           </div>
         </div>
       </div>

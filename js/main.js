@@ -1,3 +1,4 @@
+// ---------- Modal Cart -------------
 const listaCompras = JSON.parse(sessionStorage.getItem('listaCompras')) || [];
 const listaDestino = document.getElementById('listaDestino');
 const indicadorItens = document.getElementById('count');
@@ -85,10 +86,42 @@ const clearList = () => {
   listaCompras.length = 0;
   sessionStorage.removeItem('listaCompras');
   renderElements();
-  openModal();
 };
 
 const modalFinal = () => {
+  openModal();
+  openModalConfirmation()
+}
+
+const clearButton = () => {
   clearList();
-  alert("Compra Finalizada!");
+  openModal();
+}
+
+// ---------- Modal Confirm -------------
+const openModalConfirmation = () => {
+  const modalConfirm = document.getElementById("modalConfirm");
+  modalConfirm.classList.toggle('show');
+
+  const sectionBanner = document.getElementById("banner");
+  const sectionContent = document.getElementById("sectionContent");
+  const footer = document.getElementById("footer");
+  const header = document.getElementById("header");
+
+  header.classList.toggle("blur-content");
+  header.classList.toggle("disabled-content");
+  sectionBanner.classList.toggle("blur-content");
+  sectionBanner.classList.toggle("disabled-content");
+  sectionContent.classList.toggle("disabled-content");
+  sectionContent.classList.toggle("blur-content");
+  footer.classList.toggle("blur-content");
+  footer.classList.toggle("disabled-content");
+
+  renderElements();
+};
+
+const confirmButton = () => {
+  clearList();
+  renderElements();
+  openModalConfirmation();
 }

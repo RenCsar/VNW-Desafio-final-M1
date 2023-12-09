@@ -101,14 +101,14 @@ header nav img:hover,
 
 .notification {
     position: absolute;
-    top: 5px;
-    right: 25px;
+    top: 3px;
+    right: 23px;
     background-color: var(--vermelho-count);
-    padding: 3px;
+    padding: 0px 5px 2px 4px;
     border-radius: 100px;
     color: var(--branco);
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -239,17 +239,21 @@ main {
     transition: var(--transition);
 }
 
-.modal {
+.modal,
+.modal-confirm {
     display: none;
     z-index: 9;
-    height: 500px;
-    width: 400px;
     background-color: var(--bg-modal);
     position: fixed;
-    right: 35px;
-    top: 50px;
     border-radius: var(--border-radius-sm);
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.modal {
+    height: 500px;
+    width: 400px;
+    right: 35px;
+    top: 50px;
     padding: 10px;
 }
 
@@ -260,23 +264,30 @@ main {
     justify-content: space-between;
 }
 
-.show {
-    display: flex;
-}
-
-.blur-content {
-    filter: blur(10px);
-}
-
-.disabled-content {
-    pointer-events: none;
-}
-
 .modal-content .modal-header,
 .modal-content .btn-container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.modal-content .modal-header {
+    flex-direction: column;
+}
+
+.modal-header .btn-close {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-header .btn-close button {
+    background-color: var(--vermelho-count);
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    width: 25px;
+    height: 25px;
 }
 
 .modal-content .list-container {
@@ -368,6 +379,38 @@ main {
 
 .modal-content .btn-container .btn-clear {
     width: 100px;
+}
+
+.modal-confirm {
+    height: 200px;
+    width: 350px;
+    transform: translate(50%, -50%);
+    top: 50%;
+    right: 50%;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.modal-confirm .modal-confirm-content {
+    height: 115px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show {
+    display: flex;
+}
+
+.blur-content {
+    filter: blur(10px);
+}
+
+.disabled-content {
+    pointer-events: none;
 }
 
 footer {
