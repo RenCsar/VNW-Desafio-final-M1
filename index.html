@@ -19,25 +19,22 @@
   </head>
   <body>
     <header id="header">
-      <figure>
+      <figure data-tooltip="Home" class="home-logo-container">
         <a href="/index.html">
           <img src="./assets/logo.webp" alt="logo" />
         </a>
       </figure>
       <nav>
-        <figure>
-          <img src="./assets/search.webp" alt="search-icon" />
+        <figure data-tooltip="Pesquisar" id="searchIcon">
+          <img src="../assets/search.webp" alt="search-icon" />
         </figure>
-        <figure>
-          <img src="./assets/perfil.webp" alt="perfin-icon" />
+        <figure data-tooltip="Perfil" id="perfilIcon">
+          <a href="./pages/compras.html">
+            <img src="../assets/perfil.webp" alt="perfin-icon" />
+          </a>
         </figure>
-        <figure>
-          <img
-            src="./assets/cart.webp"
-            alt="cart-icon"
-            onclick="openModal()"
-            id="btnCarrinho"
-          />
+        <figure data-tooltip="Carrinho" id="cartIcon" onclick="openModal()">
+          <img src="../assets/cart.webp" alt="cart-icon" id="btnCarrinho" />
           <span id="count"></span>
         </figure>
       </nav>
@@ -339,7 +336,7 @@
             <div class="btn-close">
               <button onclick="openModal()">X</button>
             </div>
-            <h3>Carrinho de Compras:</h3>
+            <h3>Carrinho de Compras</h3>
           </div>
           <div class="list-container">
             <ul id="listaDestino"></ul>

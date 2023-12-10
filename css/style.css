@@ -83,13 +83,21 @@ header figure img {
 header nav {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 10px;
+}
+
+header nav figure {
+    height: 50px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 header nav img {
     width: 20px;
     height: 20px;
-    cursor: pointer;
     transition: var(--transition);
 }
 
@@ -99,10 +107,32 @@ header nav img:hover,
     transform: scale(1.1);
 }
 
+header figure::before,
+header nav figure::before {
+    width: 100px;
+    height: 25px;
+    position: absolute;
+    top: 55px;
+    right: 35px;
+    content: attr(data-tooltip);
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: var(--cinza-claro);
+    border-radius: var(--border-radius-sm);
+    color: var(--verde);
+    font-weight: bold;
+    transition: opacity 0.8s;
+    z-index: 99;
+}
+
 .notification {
     position: absolute;
     top: 3px;
-    right: 23px;
+    right: 32px;
     background-color: var(--vermelho-count);
     padding: 0px 5px 2px 4px;
     border-radius: 100px;
@@ -113,6 +143,17 @@ header nav img:hover,
     justify-content: center;
     align-items: center;
 }
+
+header .home-logo-container::before {
+    top: 55px;
+    left: 30px;
+}
+
+header figure:hover::before {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 main {
     background-color: var(--bg-body);
@@ -250,7 +291,7 @@ main {
 }
 
 .modal {
-    height: 500px;
+    height: 540px;
     width: 400px;
     top: 50px;
     right: 35px;
@@ -428,24 +469,6 @@ main {
     align-items: center;
 }
 
-.show {
-    display: flex;
-}
-
-.blur-content {
-    filter: blur(10px);
-}
-
-.disabled-content {
-    pointer-events: none;
-}
-
-.modal-content .btn-container .btn-done.disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    background-color: var(--cinza);
-}
-
 footer {
     background-color: var(--bg-footer);
     width: 100%;
@@ -546,6 +569,28 @@ footer {
 .pay-container figure:nth-child(3) img {
     width: 80px;
     height: 30px;
+}
+
+.show {
+    display: flex;
+}
+
+.blur-content {
+    filter: blur(10px);
+}
+
+.disabled-content {
+    pointer-events: none;
+}
+
+.modal-content .btn-container .btn-done.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: var(--cinza);
+}
+
+.menu-active {
+    background-color: rgba(161, 161, 161, 0.1);
 }
 
 @media (max-width: 850px) {

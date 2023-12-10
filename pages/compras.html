@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/compras.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/selfcare-logo.webp"
+      type="image/x-icon"
+    />
+    <meta name="description" content="SelfCare: cuidado pessoal" />
+    <meta
+      name="keywords"
+      content="SelfCare, Cuidado, pessoal, shampoo, sérum"
+    />
+    <meta name="author" content="Renan Cesar" />
+    <title>SelfCare - Minhas compras</title>
+  </head>
+  <body>
+    <header id="header">
+      <figure data-tooltip="Home" class="home-logo-container">
+        <a href="/index.html">
+          <img src="../assets/logo.webp" alt="logo" />
+        </a>
+      </figure>
+      <nav>
+        <figure data-tooltip="Pesquisar" id="searchIcon">
+          <img src="../assets/search.webp" alt="search-icon" />
+        </figure>
+        <figure data-tooltip="Perfil" id="perfilIcon">
+          <a href="./compras.html">
+            <img src="../assets/perfil.webp" alt="perfin-icon" />
+          </a>
+        </figure>
+        <figure data-tooltip="Carrinho" id="cartIcon" onclick="comprasModal()">
+          <img src="../assets/cart.webp" alt="cart-icon" id="btnCarrinho" />
+          <span id="count"></span>
+        </figure>
+      </nav>
+    </header>
+    <main>
+      <section class="perfil-container" id="sectionContent">
+        <div class="container-geral">
+          <div class="img-container-geral">
+            <div class="banner-container" id="banner"></div>
+            <div class="img-container">
+              <img
+                src="https://media.licdn.com/dms/image/D4D03AQEX6KDmfc6jTw/profile-displayphoto-shrink_800_800/0/1670788183157?e=1702512000&v=beta&t=QYhukVq2iP9Wum1ioATj_jZ7LAyxGxRRBLqjOZkxARY"
+                alt="Foto de  perfil"
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <div class="modal-header" id="modalHeader">
+            <div class="btn-close">
+              <button onclick="comprasModal()">X</button>
+            </div>
+          </div>
+          <div class="modat-text-container" id="cartMessenge"></div>
+          <div class="total" id="total"></div>
+          <div class="btn-container">
+            <button onclick="redirectHome()" class="btn-done" id="btnDone">
+              Voltar para compras
+            </button>
+            <button onclick="clearComprasModal()" class="btn-clear">
+              Esvaziar
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="first-section">
+        <div class="terms-container">
+          <ul>
+            <li>
+              <a href="#"> Contato </a>
+            </li>
+            <li>
+              <a href="#"> Termos de serviço </a>
+            </li>
+            <li>
+              <a href="#"> Política de privacidade </a>
+            </li>
+            <li>
+              <a href="#"> Cancelamento, troca e reembolso </a>
+            </li>
+          </ul>
+        </div>
+        <div class="newsletter-container">
+          <p>Newsletter</p>
+          <form>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Digite seu melhor e-mail"
+            />
+            <input type="submit" value="Inscrever" />
+          </form>
+        </div>
+      </div>
+      <div class="second-section">
+        <div class="media-container">
+          <figure>
+            <img src="../assets/instagram.webp" alt="instagram-icon" />
+          </figure>
+          <figure>
+            <img src="../assets/facebook.webp" alt="facebook-icon" />
+          </figure>
+        </div>
+        <div class="pay-container">
+          <figure>
+            <img src="../assets/mastercard.webp" alt="mastercard-icon" />
+          </figure>
+          <figure>
+            <img src="../assets/paypall.webp" alt="paypall-icon" />
+          </figure>
+          <figure>
+            <img src="../assets/visa.webp" alt="visa-icon" />
+          </figure>
+        </div>
+      </div>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

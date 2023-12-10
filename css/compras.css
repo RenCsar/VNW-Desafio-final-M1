@@ -1,0 +1,65 @@
+@import url("../css/style.css");
+
+.perfil-container .container-geral {
+    /* background-color: var(--verde); */
+    border-radius: var(--border-radius-sm);
+    min-height: 620px;
+}
+
+.img-container-geral .banner-container {
+    width: 100%;
+    height: 200px;
+    background: var(--verde-claro);
+}
+
+.img-container-geral .img-container {
+    position: relative;
+    background-color: red;
+    display: flex;
+    padding: 0px var(--padding-lateral);
+    margin-bottom: 120px;
+}
+
+.img-container-geral .img-container img {
+    position: absolute;
+    width: 140px;
+    border-radius: 100px;
+    top: -80px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.container-geral .text-container {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 320px;
+    position: absolute;
+    top: 330px;
+    left: 10px;
+}
+
+.pedidos-container {
+    background-color: var(--cinza-claro);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: var(--border-radius-sm);
+    width: 80%;
+    height: 500px;
+    position: absolute;
+    top: 150px;
+    right: 40px;
+}
+
+
+
+
+.modal {
+    height: 150px;
+    width: 350px;
+}
+
+.modal .modat-text-container {
+    text-align: center;
+    margin-top: 10px;
+}

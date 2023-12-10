@@ -1,5 +1,6 @@
 // ---------- Modal Cart -------------
 const listaCompras = JSON.parse(sessionStorage.getItem('listaCompras')) || [];
+const minhasCompras = JSON.parse(sessionStorage.getItem('minhasCompras')) || [];
 const listaDestino = document.getElementById('listaDestino');
 const indicadorItens = document.getElementById('count');
 
@@ -57,12 +58,12 @@ const renderElements = () => {
       const textContainer = document.createElement("div");
       textContainer.classList.add("text-container");
       textContainer.innerHTML = `
-    <p>${produto.nome}</p>
-    <div class="price-container">
+      <p>${produto.nome}</p>
+      <div class="price-container">
       <p id="qntProduto${produto.imgSrc}">Qnt: ${contagemProdutos[produto.imgSrc]}</p>
       <p id="priceProduto${produto.imgSrc}">R$ ${(contagemProdutos[produto.imgSrc] * produto.preco.toFixed(2))}</p>      
-    </div>
-    `;
+      </div>
+      `;
       li.appendChild(textContainer);
 
       const trash = document.createElement("img");
@@ -86,6 +87,12 @@ const renderElements = () => {
 };
 
 const openModal = () => {
+  modalClass();
+  menuActive();
+  renderElements();
+};
+
+const modalClass = () => {
   const modal = document.getElementById("modal");
   modal.classList.toggle('show');
 
@@ -99,9 +106,12 @@ const openModal = () => {
   sectionContent.classList.toggle("blur-content");
   footer.classList.toggle("blur-content");
   footer.classList.toggle("disabled-content");
+}
 
-  renderElements();
-};
+const menuActive = () => {
+  const cartIcon = document.getElementById("cartIcon");
+  cartIcon.classList.toggle("menu-active");
+}
 
 const addProduto = (nome, preco, btnId, imgSrc) => {
   imgSrc = `.${imgSrc}`;
@@ -132,6 +142,17 @@ const clearButton = () => {
   openModal();
 }
 
+const scrollToContent = () => {
+  const sectionContent = document.getElementById('sectionContent');
+  if (sectionContent) {
+    const offsetTop = sectionContent.offsetTop;
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth'
+    });
+  }
+}
+
 // ---------- Modal Confirm -------------
 const openModalConfirmation = () => {
   const modalConfirm = document.getElementById("modalConfirm");
@@ -155,7 +176,69 @@ const openModalConfirmation = () => {
 };
 
 const confirmButton = () => {
+  addFinalList();
   clearList();
   renderElements();
   openModalConfirmation();
 }
+
+const addFinalList = () => {
+  let preOrder = [];
+  if (preOrder.length == 0) {
+    preOrder = [...listaCompras]
+  } else {
+    preOrder = [...listaCompras, preOrder]
+  }
+  minhasCompras.push(preOrder);
+  sessionStorage.setItem('minhasCompras', JSON.stringify(minhasCompras));
+}
+
+// ---------- Page Compras -------------
+
+const comprasModal = () => {
+  modalClass();
+  checkItemsList();
+}
+
+const redirectHome = () => {
+  window.location.href = "/index.html?redirect=true";
+}
+
+const clearComprasModal = () => {
+  listaCompras.length = 0;
+  sessionStorage.removeItem('listaCompras');
+  comprasModal();
+  updateNotification();
+}
+
+const checkItemsList = () => {
+  const cartMessenge = document.getElementById("cartMessenge");
+
+  if (listaCompras.length <= 0) {
+    cartMessenge.innerHTML = `
+    <h3>Carrinho vazio</h3>
+    `
+  } else {
+    cartMessenge.innerHTML = `
+    <h3>Você possui itens no carrinho</h3>
+    `
+  }
+}
+
+const renderMinhasCompras = () => {
+  const idList = minhasCompras.map((item, index) => ([index + 1, ...item]))
+  const orderList = idList.sort((a, b) => b[0] - a[0])
+  console.log(orderList);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.location.pathname === '/pages/compras.html') {
+    console.log("Estamos na página minhas compras!");
+    renderMinhasCompras();
+  } else if (window.location.pathname === '/index.html' && window.location.search === '?redirect=true') {
+    console.log("Estamos na página Home redirecionado!");
+    scrollToContent();
+  } else {
+    console.log("Estamos na página Home!");
+  }
+})
