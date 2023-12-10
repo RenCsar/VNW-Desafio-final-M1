@@ -32,27 +32,55 @@ const isEmptyCart = () => {
 
 const renderElements = () => {
   listaDestino.innerHTML = '';
+  const contagemProdutos = {};
+
   listaCompras.forEach((produto, index) => {
-    const li = document.createElement('li');
-    const img = document.createElement('img');
-    img.src = produto.imgSrc;
-    img.alt = produto.nome;
-    li.appendChild(img);
+    const imgSrc = produto.imgSrc;
 
-    const textoProduto = document.createElement('span');
-    textoProduto.textContent = `${produto.nome} - R$ ${produto.preco.toFixed(2)}`;
-    li.appendChild(textoProduto);
+    contagemProdutos[imgSrc] = (contagemProdutos[imgSrc] || 0) + 1;
+    const produtoRenderizado = document.getElementById(`produto${imgSrc}`);
 
-    const trash = document.createElement("img");
-    trash.src = `./assets/lixeira.webp`;
-    trash.alt = `icone-lixeira`;
-    const btnRemover = document.createElement('button');
-    btnRemover.onclick = () => removerItem(index);
+    if (produtoRenderizado) {
+      const qnt = document.getElementById(`qntProduto${imgSrc}`);
+      qnt.textContent = `Qnt: ${contagemProdutos[produto.imgSrc]}`;
+      const preco = document.getElementById(`priceProduto${imgSrc}`);
+      preco.textContent = `R$ ${(contagemProdutos[produto.imgSrc] * produto.preco).toFixed(2)}`;
+    } else {
 
-    btnRemover.appendChild(trash);
-    li.appendChild(btnRemover);
-    listaDestino.appendChild(li);
+      const li = document.createElement('li');
+      li.id = `produto${produto.imgSrc}`
+      const img = document.createElement('img');
+      img.src = produto.imgSrc;
+      img.alt = produto.nome;
+      li.appendChild(img);
+
+      const textContainer = document.createElement("div");
+      textContainer.classList.add("text-container");
+      textContainer.innerHTML = `
+    <p>${produto.nome}</p>
+    <div class="price-container">
+      <p id="qntProduto${produto.imgSrc}">Qnt: ${contagemProdutos[produto.imgSrc]}</p>
+      <p id="priceProduto${produto.imgSrc}">R$ ${(contagemProdutos[produto.imgSrc] * produto.preco.toFixed(2))}</p>      
+    </div>
+    `;
+      li.appendChild(textContainer);
+
+      const trash = document.createElement("img");
+      trash.src = `./assets/lixeira.webp`;
+      trash.alt = `icone-lixeira`;
+      const btnRemover = document.createElement('button');
+      btnRemover.onclick = () => removerItem(index);
+
+      btnRemover.appendChild(trash);
+      li.appendChild(btnRemover);
+      listaDestino.appendChild(li);
+    }
   });
+
+  const total = listaCompras.reduce((a, b) => a + b.preco, 0).toFixed(2);
+  const totalContainer = document.getElementById("total");
+  totalContainer.innerHTML = `<p>Total: <span>R$ ${total}</span></p>`;
+
   updateNotification();
   isEmptyCart();
 };

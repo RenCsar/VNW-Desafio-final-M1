@@ -314,7 +314,7 @@ main {
 
 .list-container ul .empty-cart {
     width: 100%;
-    height: 320px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -335,6 +335,21 @@ main {
 .list-container ul img {
     width: 80px;
     height: 80px;
+}
+
+.list-container .text-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 16px;
+}
+
+.list-container .price-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .list-container ul button,
@@ -360,6 +375,17 @@ main {
 
 .list-container ul button:hover {
     background-color: var(--bg-btn-remove-hover);
+}
+
+.modal-content .total {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    padding-inline: 20px;
+}
+
+.modal-content .total span {
+    font-weight: bold;
 }
 
 .modal-content .btn-container {
