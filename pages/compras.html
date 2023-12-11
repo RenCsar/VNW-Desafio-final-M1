@@ -28,7 +28,7 @@
         <figure data-tooltip="Pesquisar" id="searchIcon">
           <img src="../assets/search.webp" alt="search-icon" />
         </figure>
-        <figure data-tooltip="Perfil" id="perfilIcon">
+        <figure data-tooltip="Conta" id="perfilIcon">
           <a href="./compras.html">
             <img src="../assets/perfil.webp" alt="perfin-icon" />
           </a>
@@ -43,15 +43,127 @@
       <section class="perfil-container" id="sectionContent">
         <div class="container-geral">
           <div class="img-container-geral">
-            <div class="banner-container" id="banner"></div>
-            <div class="img-container">
-              <img
-                src="https://media.licdn.com/dms/image/D4D03AQEX6KDmfc6jTw/profile-displayphoto-shrink_800_800/0/1670788183157?e=1702512000&v=beta&t=QYhukVq2iP9Wum1ioATj_jZ7LAyxGxRRBLqjOZkxARY"
-                alt="Foto de  perfil"
-              />
+            <div class="banner-container" id="banner">
+              <img src="../assets/banner-liso.webp" alt="banner-fundo" />
             </div>
           </div>
-
+          <div class="pedidos-container">
+            <div class="menu-column">
+              <div class="menu-item">
+                <div class="icon-menu-img" id="menuPerfil">
+                  <img
+                    width="50"
+                    height="50"
+                    src="https://img.icons8.com/windows/96/40C057/user-male-circle.png"
+                    alt="user-male-circle"
+                  />
+                </div>
+                <div class="text-menu" id="textMenu">
+                  <p>Olá, <span>Renan Cesar</span>!</p>
+                  <p>Aqui é a sua conta <span>:)</span></p>
+                </div>
+              </div>
+              <div class="menu-item" onclick="showTab('pedido')">
+                <div class="icon-menu" id="menuPedido">
+                  <img
+                    width="35"
+                    height="35"
+                    src="https://img.icons8.com/material-outlined/48/40C057/box--v1.png"
+                    alt="box--v1"
+                  />
+                </div>
+                <div class="text-menu" id="textMenu">
+                  <p>Pedido</p>
+                </div>
+                <div class="arrow" id="arrow">
+                  <img
+                    width="15"
+                    height="15"
+                    src="https://img.icons8.com/ios-glyphs/30/000000/more-than.png"
+                    alt="more-than"
+                  />
+                </div>
+              </div>
+              <div class="menu-item" onclick="showTab('gift')">
+                <div class="icon-menu" id="menuGift">
+                  <img
+                    width="35"
+                    height="35"
+                    src="https://img.icons8.com/fluency-systems-regular/48/40C057/ticket.png"
+                    alt="ticket"
+                  />
+                </div>
+                <div class="text-menu" id="textMenu">
+                  <p>Gift, vales</p>
+                </div>
+                <div class="arrow" id="arrow">
+                  <img
+                    width="15"
+                    height="15"
+                    src="https://img.icons8.com/ios-glyphs/30/000000/more-than.png"
+                    alt="more-than"
+                  />
+                </div>
+              </div>
+              <div class="menu-item" onclick="showTab('credit')">
+                <div class="icon-menu" id="menuCreditCard">
+                  <img
+                    width="35"
+                    height="35"
+                    src="https://img.icons8.com/ios/50/40C057/bank-card-back-side--v1.png"
+                    alt="bank-card-back-side--v1"
+                  />
+                </div>
+                <div class="text-menu" id="textMenu">
+                  <p>Cartões</p>
+                </div>
+                <div class="arrow" id="arrow">
+                  <img
+                    width="15"
+                    height="15"
+                    src="https://img.icons8.com/ios-glyphs/30/000000/more-than.png"
+                    alt="more-than"
+                  />
+                </div>
+              </div>
+              <div class="menu-item" onclick="showTab('address')">
+                <div class="icon-menu" id="menuaddress">
+                  <img
+                    width="35"
+                    height="36"
+                    src="https://img.icons8.com/fluency-systems-regular/48/40C057/marker--v1.png"
+                    alt="marker--v1"
+                  />
+                </div>
+                <div class="text-menu" id="textMenu">
+                  <p>Endereço</p>
+                </div>
+                <div class="arrow" id="arrow">
+                  <img
+                    width="15"
+                    height="15"
+                    src="https://img.icons8.com/ios-glyphs/30/000000/more-than.png"
+                    alt="more-than"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="content-column">
+              <div class="content-item-container" id="pedido">
+                <h2>Pedidos</h2>
+                <div class="order-list-container" id="orderList"></div>
+              </div>
+              <div class="content-item-container hide" id="gift">
+                <h2>Gift</h2>
+              </div>
+              <div class="content-item-container hide" id="credit">
+                <h2>Credit Card</h2>
+              </div>
+              <div class="content-item-container hide" id="address">
+                <h2>Address</h2>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <div class="modal" id="modal">

@@ -225,10 +225,93 @@ const checkItemsList = () => {
   }
 }
 
+const exibirDataHora = () => {
+  const meses = [
+    'jan', 'fev', 'mar', 'abr', 'mai', 'jun',
+    'jul', 'ago', 'set', 'out', 'nov', 'dez'
+  ];
+
+  const dataAtual = new Date();
+  const horas = dataAtual.getHours();
+  const minutos = dataAtual.getMinutes();
+
+  const dia = dataAtual.getDate();
+  const mes = dataAtual.getMonth();
+
+  const dataHoraString = `Pedido realizado <span>${horas}:${minutos < 10 ? '0' : ''}${minutos} - ${dia}/${meses[mes]}.</span>`;
+  return dataHoraString;
+}
+
 const renderMinhasCompras = () => {
   const idList = minhasCompras.map((item, index) => ([index + 1, ...item]))
-  const orderList = idList.sort((a, b) => b[0] - a[0])
-  console.log(orderList);
+  const orderList = idList.sort((a, b) => b[0] - a[0]).map((i) => i.slice(1))
+  const container = document.getElementById('orderList');
+
+  if (orderList.length == 0) {
+    const div = document.createElement("div");
+    div.className = "empty-list-container"
+    const h3 = document.createElement("h3");
+    h3.innerText = "A sua lista de pedidos está vazia :(";
+    div.appendChild(h3);
+    container.appendChild(div);
+  } else {
+    orderList.map((i) => {
+      const pedido = document.createElement("div");
+      pedido.className = "pedido-item";
+      const pedidoHeader = document.createElement('div');
+      const pedidoBody = document.createElement('div');
+      const headerTitle = document.createElement('h4');
+      const headerData = document.createElement('h5');
+      pedidoHeader.classList.add("pedido-item-header");
+      pedidoBody.classList.add("pedido-item-body");
+      headerTitle.innerText = 'Pedido realziado com sucesso!';
+      headerData.innerHTML = `${exibirDataHora()}`
+
+
+
+      i.map((j) => {
+
+        const ul = document.createElement("ul");
+        const li = document.createElement("li");
+        li.innerHTML = `${j.nome}`;
+
+        ul.appendChild(li);
+        pedidoBody.appendChild(ul);
+      })
+
+      pedidoHeader.appendChild(headerTitle);
+      pedidoHeader.appendChild(headerData);
+      pedido.appendChild(pedidoHeader);
+      pedido.appendChild(pedidoBody);
+      container.appendChild(pedido);
+    })
+
+    console.log(orderList);
+  }
+
+}
+
+const showTab = (id) => {
+  const tabs = ['pedido', 'gift', 'credit', 'address'];
+
+  if (!tabs.includes(id)) {
+    console.error('ID inválido');
+    return;
+  }
+
+  const clickedTab = document.getElementById(id);
+  if (clickedTab.classList.contains('hide')) {
+    clickedTab.classList.remove('hide');
+  }
+
+  tabs.forEach(tabId => {
+    if (tabId !== id) {
+      const tab = document.getElementById(tabId);
+      if (!tab.classList.contains('hide')) {
+        tab.classList.add('hide');
+      }
+    }
+  });
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -242,3 +325,6 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log("Estamos na página Home!");
   }
 })
+
+
+
