@@ -187,6 +187,9 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     padding: 20px;
     color: var(--cinza);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .gift .card-container .card .card-header {
@@ -205,10 +208,15 @@
     line-height: 20px;
 }
 
+.card-container .card .card-body .body-col2 {
+    text-align: end;
+}
+
 .gift .card-container .card .card-code {
     background-color: var(--cinza);
     color: var(--cinza-claro);
     padding: 15px;
+    margin-bottom: 10px;
 }
 
 
