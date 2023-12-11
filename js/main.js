@@ -242,6 +242,22 @@ const exibirDataHora = () => {
   return dataHoraString;
 }
 
+const contarItensIguais = (array) => {
+  const agrupado = {};
+
+  array.forEach(objeto => {
+    const imgSrc = objeto.imgSrc;
+
+    if (!agrupado[imgSrc]) {
+      agrupado[imgSrc] = { ...objeto, quantidade: 1 };
+    } else {
+      agrupado[imgSrc].quantidade++;
+    }
+  });
+  const resultado = Object.values(agrupado);
+  return resultado;
+}
+
 const renderMinhasCompras = () => {
   const idList = minhasCompras.map((item, index) => ([index + 1, ...item]))
   const orderList = idList.sort((a, b) => b[0] - a[0]).map((i) => i.slice(1))
@@ -249,15 +265,14 @@ const renderMinhasCompras = () => {
 
   if (orderList.length == 0) {
     const div = document.createElement("div");
-    div.className = "empty-list-container"
     const h3 = document.createElement("h3");
+    div.className = "empty-list-container"
     h3.innerText = "A sua lista de pedidos está vazia :(";
     div.appendChild(h3);
     container.appendChild(div);
   } else {
     orderList.map((i) => {
       const pedido = document.createElement("div");
-      pedido.className = "pedido-item";
       const pedidoHeader = document.createElement('div');
       const pedidoBody = document.createElement('div');
       const headerTitle = document.createElement('h4');
@@ -265,18 +280,34 @@ const renderMinhasCompras = () => {
       pedidoHeader.classList.add("pedido-item-header");
       pedidoBody.classList.add("pedido-item-body");
       headerTitle.innerText = 'Pedido realziado com sucesso!';
-      headerData.innerHTML = `${exibirDataHora()}`
+      headerData.innerHTML = `${exibirDataHora()}`;
+      pedido.className = "pedido-item";
 
+      const itensArray = contarItensIguais(i)
 
+      itensArray.map((j) => {
+        const pedidoItem = document.createElement("div");
+        const pedidoImg = document.createElement("div");
+        const pedidoText = document.createElement("div");
+        const img = document.createElement("img");
+        const pText = document.createElement("p");
+        const pCount = document.createElement("p");
 
-      i.map((j) => {
+        pedidoImg.className = "img-container";
+        pedidoText.className = "text-container";
+        pedidoItem.className = "pedido-unidade";
 
-        const ul = document.createElement("ul");
-        const li = document.createElement("li");
-        li.innerHTML = `${j.nome}`;
+        img.src = `${j.imgSrc}`;
+        pText.innerHTML = `${j.nome}`;
+        pCount.innerHTML = `${j.quantidade} unidade${j.quantidade == 1 ? '' : 's'}`;
 
-        ul.appendChild(li);
-        pedidoBody.appendChild(ul);
+        pedidoImg.appendChild(img);
+        pedidoItem.appendChild(pedidoImg);
+
+        pedidoText.appendChild(pText);
+        pedidoText.appendChild(pCount);
+        pedidoItem.appendChild(pedidoText);
+        pedidoBody.appendChild(pedidoItem);
       })
 
       pedidoHeader.appendChild(headerTitle);
@@ -284,11 +315,8 @@ const renderMinhasCompras = () => {
       pedido.appendChild(pedidoHeader);
       pedido.appendChild(pedidoBody);
       container.appendChild(pedido);
-    })
-
-    console.log(orderList);
+    });
   }
-
 }
 
 const showTab = (id) => {
@@ -325,6 +353,3 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log("Estamos na página Home!");
   }
 })
-
-
-
