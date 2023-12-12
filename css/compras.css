@@ -168,7 +168,10 @@
     justify-content: center;
 }
 
-.content-column .gift .card-container {
+
+
+.content-column .gift .card-container,
+.content-column .credit .card-container {
     width: 100%;
     height: 90%;
     border-radius: var(--border-radius-sm);
@@ -180,7 +183,8 @@
     margin-top: 20px;
 }
 
-.content-column .gift .card-container .card {
+.content-column .gift .card-container .card,
+.content-column .credit .card-container .card {
     width: 430px;
     height: 250px;
     border-radius: var(--border-radius-md);
@@ -192,7 +196,8 @@
     justify-content: space-between;
 }
 
-.gift .card-container .card .card-header {
+.gift .card-container .card .card-header,
+.credit .card-container .card .card-header {
     border-bottom: 1px solid var(--border-light-gray);
     height: 30px;
     display: flex;
@@ -200,7 +205,8 @@
     align-items: baseline;
 }
 
-.gift .card-container .card .card-body {
+.gift .card-container .card .card-body,
+.credit .card-container .card .card-body {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -208,16 +214,52 @@
     line-height: 20px;
 }
 
+.card-container .card .card-body .body-col2,
 .card-container .card .card-body .body-col2 {
     text-align: end;
 }
 
-.gift .card-container .card .card-code {
+.gift .card-container .card .card-code,
+.credit .card-container .card .card-code {
     background-color: var(--cinza);
     color: var(--cinza-claro);
     padding: 15px;
     margin-bottom: 10px;
 }
+
+.content-column .credit .card-container .card {
+    color: var(--preto);
+}
+
+.credit .card-container .card .card-header {
+    height: 50px;
+}
+
+.credit .card-container .card .card-header p {
+    background-color: var(--vermelho);
+    color: var(--branco);
+    padding: 5px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: .8s all;
+}
+
+.credit .card-container .card .card-header p:hover {
+    transition: .4s all;
+    transform: scale(1.02);
+}
+
+.credit .card-container .img-container img {
+    width: 45px;
+    height: 30px;
+}
+
+.credit .card-container .card .card-code {
+    display: flex;
+    justify-content: center;
+}
+
+
 
 
 .modal {
