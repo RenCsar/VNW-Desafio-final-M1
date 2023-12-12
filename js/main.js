@@ -327,16 +327,25 @@ const showTab = (id) => {
     return;
   }
 
+  const clickedElement = document.getElementById(`${id}Lead`);
+  const menuItemClicked = document.getElementById(`${id}MenuItem`);
   const clickedTab = document.getElementById(id);
+
   if (clickedTab.classList.contains('hide')) {
     clickedTab.classList.remove('hide');
+    clickedElement.classList.add("font-weight");
+    menuItemClicked.classList.add("active");
   }
 
   tabs.forEach(tabId => {
     if (tabId !== id) {
       const tab = document.getElementById(tabId);
+      const elementWeight = document.getElementById(`${tabId}Lead`);
+      const menuItemBefore = document.getElementById(`${tabId}MenuItem`);
       if (!tab.classList.contains('hide')) {
         tab.classList.add('hide');
+        elementWeight.classList.remove("font-weight");
+        menuItemBefore.classList.remove("active");
       }
     }
   });

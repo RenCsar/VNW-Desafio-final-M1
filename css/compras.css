@@ -62,6 +62,24 @@
     height: 90px;
     cursor: pointer;
     justify-content: space-between;
+    position: relative;
+}
+
+.menu-column .menu-item::before {
+    content: '';
+    background-color: var(--vermelho);
+    height: 80%;
+    width: 4px;
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    display: none;
+}
+
+.menu-column .menu-item.active::before {
+    display: flex;
 }
 
 .pedidos-container .menu-column .menu-item:nth-child(1) {
@@ -339,4 +357,8 @@
 
 .content-item-container.hide {
     display: none;
+}
+
+.font-weight {
+    font-weight: bold;
 }
