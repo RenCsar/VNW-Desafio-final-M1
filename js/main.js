@@ -310,6 +310,12 @@ const renderMinhasCompras = () => {
         pedidoBody.appendChild(pedidoItem);
       })
 
+      const total = i.reduce((a, b) => a + b.preco, 0).toFixed(2);
+      const totalContainer = document.createElement("div");
+      totalContainer.innerHTML = `<p>Total: <span>R$ ${total}</span></p>`;
+      totalContainer.className = "total-container";
+      pedidoBody.appendChild(totalContainer);
+
       pedidoHeader.appendChild(headerTitle);
       pedidoHeader.appendChild(headerData);
       pedido.appendChild(pedidoHeader);

@@ -186,6 +186,14 @@
     justify-content: center;
 }
 
+.pedido-item-body .total-container {
+    margin-top: 10px;
+}
+
+.pedido-item-body .total-container span {
+    font-weight: bold;
+}
+
 .content-column .gift .card-container,
 .content-column .credit .card-container,
 .content-column .address .card-container {
