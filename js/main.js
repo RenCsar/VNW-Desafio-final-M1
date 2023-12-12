@@ -182,13 +182,31 @@ const confirmButton = () => {
   openModalConfirmation();
 }
 
+const exibirDataHora = () => {
+  const meses = [
+    'jan', 'fev', 'mar', 'abr', 'mai', 'jun',
+    'jul', 'ago', 'set', 'out', 'nov', 'dez'
+  ];
+
+  const dataAtual = new Date();
+  const horas = dataAtual.getHours();
+  const minutos = dataAtual.getMinutes();
+
+  const dia = dataAtual.getDate();
+  const mes = dataAtual.getMonth();
+
+  const dataHoraString = `${horas}:${minutos < 10 ? '0' : ''}${minutos} - ${dia}/${meses[mes]}`;
+  return dataHoraString;
+}
+
 const addFinalList = () => {
   let preOrder = [];
   if (preOrder.length == 0) {
-    preOrder = [...listaCompras]
+    preOrder = [...listaCompras, exibirDataHora()]
   } else {
-    preOrder = [...listaCompras, preOrder]
+    preOrder = [...listaCompras, preOrder, exibirDataHora()]
   }
+
   minhasCompras.push(preOrder);
   sessionStorage.setItem('minhasCompras', JSON.stringify(minhasCompras));
 }
@@ -225,23 +243,6 @@ const checkItemsList = () => {
   }
 }
 
-const exibirDataHora = () => {
-  const meses = [
-    'jan', 'fev', 'mar', 'abr', 'mai', 'jun',
-    'jul', 'ago', 'set', 'out', 'nov', 'dez'
-  ];
-
-  const dataAtual = new Date();
-  const horas = dataAtual.getHours();
-  const minutos = dataAtual.getMinutes();
-
-  const dia = dataAtual.getDate();
-  const mes = dataAtual.getMonth();
-
-  const dataHoraString = `Pedido realizado <span>${horas}:${minutos < 10 ? '0' : ''}${minutos} - ${dia}/${meses[mes]}.</span>`;
-  return dataHoraString;
-}
-
 const contarItensIguais = (array) => {
   const agrupado = {};
 
@@ -272,6 +273,9 @@ const renderMinhasCompras = () => {
     container.appendChild(div);
   } else {
     orderList.map((i) => {
+      const time = i[i.length -1];
+      const list = i.filter((i) => i !== time);
+
       const pedido = document.createElement("div");
       const pedidoHeader = document.createElement('div');
       const pedidoBody = document.createElement('div');
@@ -280,10 +284,10 @@ const renderMinhasCompras = () => {
       pedidoHeader.classList.add("pedido-item-header");
       pedidoBody.classList.add("pedido-item-body");
       headerTitle.innerText = 'Pedido realziado com sucesso!';
-      headerData.innerHTML = `${exibirDataHora()}`;
+      headerData.innerHTML = `Pedido realizado <span>${time}.</span>`;
       pedido.className = "pedido-item";
 
-      const itensArray = contarItensIguais(i)
+      const itensArray = contarItensIguais(list)
 
       itensArray.map((j) => {
         const pedidoItem = document.createElement("div");
@@ -310,7 +314,7 @@ const renderMinhasCompras = () => {
         pedidoBody.appendChild(pedidoItem);
       })
 
-      const total = i.reduce((a, b) => a + b.preco, 0).toFixed(2);
+      const total = list.reduce((a, b) => a + b.preco, 0).toFixed(2);
       const totalContainer = document.createElement("div");
       totalContainer.innerHTML = `<p>Total: <span>R$ ${total}</span></p>`;
       totalContainer.className = "total-container";
