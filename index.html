@@ -33,7 +33,7 @@
             <img src="../assets/perfil.webp" alt="perfin-icon" />
           </a>
         </figure>
-        <figure data-tooltip="Carrinho" id="cartIcon" onclick="openModal()">
+        <figure data-tooltip="Carrinho" id="cartIcon" onclick="toggleCartModal('home')">
           <img src="../assets/cart.webp" alt="cart-icon" id="btnCarrinho" />
           <span id="count"></span>
         </figure>
@@ -334,7 +334,7 @@
         <div class="modal-content">
           <div class="modal-header" id="modalHeader">
             <div class="btn-close">
-              <button onclick="openModal()">X</button>
+              <button onclick="toggleCartModal('home')">X</button>
             </div>
             <h3>Carrinho de Compras</h3>
           </div>
@@ -343,7 +343,7 @@
           </div>
           <div class="total" id="total"></div>
           <div class="btn-container">
-            <button onclick="modalFinal()" class="btn-done" id="btnDone">
+            <button onclick="toggleConfirmModal()" class="btn-done" id="btnDone">
               Finalizar Compra
             </button>
             <button onclick="clearButton()" class="btn-clear">
@@ -356,7 +356,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="btn-close">
-              <button onclick="modalFinal()">X</button>
+              <button onclick="toggleConfirmModal()">X</button>
             </div>
           </div>
           <div class="modal-confirm-content">
@@ -366,7 +366,7 @@
             <button onclick="confirmButton()" class="btn-done">
               Confirmar Compra
             </button>
-            <button onclick="modalFinal()" class="btn-clear">Cancelar</button>
+            <button onclick="toggleConfirmModal()" class="btn-clear">Cancelar</button>
           </div>
         </div>
       </div>

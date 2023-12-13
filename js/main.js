@@ -14,8 +14,6 @@ const updateNotification = () => {
   }
 };
 
-updateNotification();
-
 const isEmptyCart = () => {
   const li = document.createElement('li');
   const btnDone = document.getElementById("btnDone");
@@ -31,7 +29,7 @@ const isEmptyCart = () => {
   }
 }
 
-const renderElements = () => {
+const renderCartElements = () => {
   listaDestino.innerHTML = '';
   const contagemProdutos = {};
 
@@ -86,27 +84,36 @@ const renderElements = () => {
   isEmptyCart();
 };
 
-const openModal = () => {
-  modalClass();
-  menuActive();
-  renderElements();
-};
-
-const modalClass = () => {
-  const modal = document.getElementById("modal");
-  modal.classList.toggle('show');
-
+const toggleModalClass = (modalType) => {
+  const header = document.getElementById("header");
   const sectionBanner = document.getElementById("banner");
   const sectionContent = document.getElementById("sectionContent");
   const footer = document.getElementById("footer");
 
-  sectionBanner.classList.toggle("blur-content");
-  sectionBanner.classList.toggle("disabled-content");
-  sectionContent.classList.toggle("disabled-content");
-  sectionContent.classList.toggle("blur-content");
-  footer.classList.toggle("blur-content");
-  footer.classList.toggle("disabled-content");
+  let sections;
+
+  if (modalType == "cart") {
+    sections = [sectionBanner, sectionContent, footer];
+  } else if (modalType == "confirm") {
+    sections = [header, sectionBanner, sectionContent, footer];
+  }
+
+  sections.forEach((i) => {
+    i.classList.toggle("blur-content");
+    i.classList.toggle("disabled-content");
+  });
 }
+
+const toggleCartModal = (home) => {
+  const modal = document.getElementById("modal");
+  modal.classList.toggle('show');
+
+  toggleModalClass("cart")
+  menuActive();
+  if (home) {
+    renderCartElements();
+  }
+};
 
 const menuActive = () => {
   const cartIcon = document.getElementById("cartIcon");
@@ -117,29 +124,31 @@ const addProduto = (nome, preco, btnId, imgSrc) => {
   imgSrc = `.${imgSrc}`;
   listaCompras.push({ nome, preco, imgSrc });
   sessionStorage.setItem('listaCompras', JSON.stringify(listaCompras));
-  renderElements();
+  renderCartElements();
 };
 
 const removerItem = index => {
   listaCompras.splice(index, 1);
   sessionStorage.setItem('listaCompras', JSON.stringify(listaCompras));
-  renderElements();
+  renderCartElements();
 };
 
 const clearList = () => {
   listaCompras.length = 0;
   sessionStorage.removeItem('listaCompras');
-  renderElements();
+  renderCartElements();
 };
 
-const modalFinal = () => {
-  openModal();
-  openModalConfirmation()
+const toggleConfirmModal = () => {
+  const modalConfirm = document.getElementById("modalConfirm");
+  modalConfirm.classList.toggle('show');
+  toggleCartModal("home");
+  toggleModalClass("confirm");
 }
 
 const clearButton = () => {
   clearList();
-  openModal();
+  toggleCartModal("home");
 }
 
 const scrollToContent = () => {
@@ -154,35 +163,15 @@ const scrollToContent = () => {
 }
 
 // ---------- Modal Confirm -------------
-const openModalConfirmation = () => {
-  const modalConfirm = document.getElementById("modalConfirm");
-  modalConfirm.classList.toggle('show');
-
-  const sectionBanner = document.getElementById("banner");
-  const sectionContent = document.getElementById("sectionContent");
-  const footer = document.getElementById("footer");
-  const header = document.getElementById("header");
-
-  header.classList.toggle("blur-content");
-  header.classList.toggle("disabled-content");
-  sectionBanner.classList.toggle("blur-content");
-  sectionBanner.classList.toggle("disabled-content");
-  sectionContent.classList.toggle("disabled-content");
-  sectionContent.classList.toggle("blur-content");
-  footer.classList.toggle("blur-content");
-  footer.classList.toggle("disabled-content");
-
-  renderElements();
-};
-
 const confirmButton = () => {
   addFinalList();
   clearList();
-  renderElements();
-  openModalConfirmation();
+  renderCartElements();
+  toggleConfirmModal();
+  toggleCartModal("home");
 }
 
-const exibirDataHora = () => {
+const getTimeDate = () => {
   const meses = [
     'jan', 'fev', 'mar', 'abr', 'mai', 'jun',
     'jul', 'ago', 'set', 'out', 'nov', 'dez'
@@ -202,9 +191,9 @@ const exibirDataHora = () => {
 const addFinalList = () => {
   let preOrder = [];
   if (preOrder.length == 0) {
-    preOrder = [...listaCompras, exibirDataHora()]
+    preOrder = [...listaCompras, getTimeDate()]
   } else {
-    preOrder = [...listaCompras, preOrder, exibirDataHora()]
+    preOrder = [...listaCompras, preOrder, getTimeDate()]
   }
 
   minhasCompras.push(preOrder);
@@ -214,8 +203,8 @@ const addFinalList = () => {
 // ---------- Page Compras -------------
 
 const comprasModal = () => {
-  modalClass();
   checkItemsList();
+  toggleCartModal();
 }
 
 const redirectHome = () => {
@@ -243,7 +232,7 @@ const checkItemsList = () => {
   }
 }
 
-const contarItensIguais = (array) => {
+const isDuplicateItems = (array) => {
   const agrupado = {};
 
   array.forEach(objeto => {
@@ -259,7 +248,7 @@ const contarItensIguais = (array) => {
   return resultado;
 }
 
-const renderMinhasCompras = () => {
+const renderOrderItems = () => {
   const idList = minhasCompras.map((item, index) => ([index + 1, ...item]))
   const orderList = idList.sort((a, b) => b[0] - a[0]).map((i) => i.slice(1))
   const container = document.getElementById('orderList');
@@ -273,7 +262,7 @@ const renderMinhasCompras = () => {
     container.appendChild(div);
   } else {
     orderList.map((i) => {
-      const time = i[i.length -1];
+      const time = i[i.length - 1];
       const list = i.filter((i) => i !== time);
 
       const pedido = document.createElement("div");
@@ -287,7 +276,7 @@ const renderMinhasCompras = () => {
       headerData.innerHTML = `Pedido realizado <span>${time}.</span>`;
       pedido.className = "pedido-item";
 
-      const itensArray = contarItensIguais(list)
+      const itensArray = isDuplicateItems(list)
 
       itensArray.map((j) => {
         const pedidoItem = document.createElement("div");
@@ -362,9 +351,10 @@ const showTab = (id) => {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  updateNotification();
   if (window.location.pathname === '/pages/compras.html') {
     console.log("Estamos na página minhas compras!");
-    renderMinhasCompras();
+    renderOrderItems();
   } else if (window.location.pathname === '/index.html' && window.location.search === '?redirect=true') {
     console.log("Estamos na página Home redirecionado!");
     scrollToContent();
