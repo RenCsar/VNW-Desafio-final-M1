@@ -2,8 +2,6 @@
 
 .perfil-container .container-geral {
     border-radius: var(--border-radius-sm);
-    /* height: 630px; */
-    /* min-height: 100vh; */
     height: 100%;
     padding-block: 30px;
     position: relative;
@@ -439,6 +437,7 @@
 }
 
 @media (max-width: 450px) {
+
     .content-column .gift .card-container .card,
     .content-column .credit .card-container .card,
     .content-column .address .card-container .card {
